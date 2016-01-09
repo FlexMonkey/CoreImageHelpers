@@ -13,7 +13,7 @@
 		3E97FA6B1C40EE58006365F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E97FA6A1C40EE58006365F7 /* Assets.xcassets */; };
 		3E97FA6E1C40EE58006365F7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E97FA6C1C40EE58006365F7 /* LaunchScreen.storyboard */; };
 		3E97FA771C40EED4006365F7 /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E97FA761C40EED4006365F7 /* ImageView.swift */; };
-		3E97FA801C412F07006365F7 /* CameraCaptureHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E97FA7F1C412F07006365F7 /* CameraCaptureHelper.swift */; };
+		3E97FA821C414257006365F7 /* CameraCaptureHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E97FA811C414257006365F7 /* CameraCaptureHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,7 +25,7 @@
 		3E97FA6D1C40EE58006365F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3E97FA6F1C40EE58006365F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3E97FA761C40EED4006365F7 /* ImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageView.swift; path = coreImageHelpers/ImageView.swift; sourceTree = "<group>"; };
-		3E97FA7F1C412F07006365F7 /* CameraCaptureHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraCaptureHelper.swift; sourceTree = "<group>"; };
+		3E97FA811C414257006365F7 /* CameraCaptureHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CameraCaptureHelper.swift; path = coreImageHelpers/CameraCaptureHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,8 +73,8 @@
 		3E97FA751C40EE74006365F7 /* coreImageHelpers */ = {
 			isa = PBXGroup;
 			children = (
+				3E97FA811C414257006365F7 /* CameraCaptureHelper.swift */,
 				3E97FA761C40EED4006365F7 /* ImageView.swift */,
-				3E97FA7F1C412F07006365F7 /* CameraCaptureHelper.swift */,
 			);
 			name = coreImageHelpers;
 			sourceTree = "<group>";
@@ -158,7 +158,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3E97FA771C40EED4006365F7 /* ImageView.swift in Sources */,
-				3E97FA801C412F07006365F7 /* CameraCaptureHelper.swift in Sources */,
+				3E97FA821C414257006365F7 /* CameraCaptureHelper.swift in Sources */,
 				3E97FA661C40EE58006365F7 /* ViewController.swift in Sources */,
 				3E97FA641C40EE58006365F7 /* AppDelegate.swift in Sources */,
 			);

@@ -38,6 +38,5 @@ class ViewController: UIViewController, CameraCaptureHelperDelegate
         
         imageView.image = crystallize.outputImage
     }
-    
 }
 
