@@ -8,18 +8,36 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, CameraCaptureHelperDelegate
+{
+    let imageView = ImageView()
 
-    override func viewDidLoad() {
+    let cameraCaptureHelper = CameraCaptureHelper(cameraPosition: .Front)
+    
+    let crystallize = CIFilter(name: "CICrystallize",
+        withInputParameters: [kCIInputRadiusKey: 30])!
+    
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+     
+        view.addSubview(imageView)
+
+        cameraCaptureHelper.delegate = self
+    }
+    
+    override func viewDidLayoutSubviews()
+    {
+        imageView.frame = view.bounds.insetBy(dx: 50, dy: 50)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    func newCameraImage(cameraCaptureHelper: CameraCaptureHelper, image: CIImage)
+    {
+        crystallize.setValue(image, forKey: kCIInputImageKey)
+        
+        imageView.image = crystallize.outputImage
     }
-
-
+    
 }
 
