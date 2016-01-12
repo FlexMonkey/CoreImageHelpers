@@ -65,62 +65,11 @@ extension ImageView: GLKViewDelegate
         {
             return
         }
-        
-        let sourceAspect = image.extent.width / image.extent.height
-        
-        let targetWidth: Int
-        let targetHeight: Int
-        let targetX: Int
-        let targetY: Int
-      
-        if image.extent.width > image.extent.height
-        {
-            // rescale and position for landscape source
-            
-            targetWidth = drawableWidth
-            targetHeight = Int(CGFloat(drawableWidth) / sourceAspect)
-            
-            targetX = 0
-            targetY = (drawableHeight / 2) - (targetHeight / 2)
-        }
-        else if image.extent.width < image.extent.height
-        {
-            // rescale and position for portrait source
-            
-            targetHeight = drawableHeight
-            targetWidth = Int(CGFloat(drawableHeight) * sourceAspect)
-            
-            targetX = (drawableWidth / 2) - (targetWidth / 2)
-            targetY = 0
-        }
-        else if drawableWidth > drawableHeight
-        {
-            // rescale and position for square source and landscape target
-            
-            targetWidth = drawableHeight
-            targetHeight = drawableHeight
-            
-            targetX = (drawableWidth / 2) - (targetWidth / 2)
-            targetY = 0
-        }
-        else if drawableWidth < drawableHeight
-        {
-            // rescale and position for square source and portrait target
-            
-            targetWidth = drawableWidth
-            targetHeight = drawableWidth
-            
-            targetX = 0
-            targetY = (drawableHeight / 2) - (targetHeight / 2)
-        }
-        else
-        {
-            targetWidth = drawableWidth
-            targetHeight = drawableHeight
-            
-            targetX = 0
-            targetY = 0
-        }
+   
+        let targetRect = image.extent.aspectFitInRect(
+            target: CGRect(origin: CGPointZero,
+                size: CGSize(width: drawableWidth,
+                    height: drawableHeight)))
         
         let ciBackgroundColor = CIColor(color: backgroundColor ?? UIColor.whiteColor())
         
@@ -135,10 +84,33 @@ extension ImageView: GLKViewDelegate
                 height: drawableHeight))
         
         ciContext.drawImage(image,
-            inRect: CGRect(x: targetX,
-                y: targetY,
-                width: targetWidth,
-                height: targetHeight),
+            inRect: targetRect,
             fromRect: image.extent)
     }
 }
+
+extension CGRect
+{
+    func aspectFitInRect(target target: CGRect) -> CGRect
+    {
+        let scale: CGFloat =
+        {
+            let scale = target.width / self.width
+            
+            return self.height * scale <= target.height ?
+                scale :
+                target.height / self.height
+        }()
+        
+        let width = self.width * scale
+        let height = self.height * scale
+        let x = target.midX - width / 2
+        let y = target.midY - height / 2
+        
+        return CGRect(x: x,
+            y: y,
+            width: width,
+            height: height)
+    }
+}
+
