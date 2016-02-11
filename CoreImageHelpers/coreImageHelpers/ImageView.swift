@@ -91,8 +91,6 @@ class MetalImageView: MTKView
         commandBuffer.presentDrawable(currentDrawable!)
         
         commandBuffer.commit()
-        
-        draw()
     }
 }
 
