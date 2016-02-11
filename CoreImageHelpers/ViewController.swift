@@ -10,12 +10,12 @@ import UIKit
 
 class ViewController: UIViewController, CameraCaptureHelperDelegate
 {
-    let imageView = ImageView()
+    let imageView = MetalImageView() //  OpenGLImageView()
 
     let cameraCaptureHelper = CameraCaptureHelper(cameraPosition: .Front)
     
-    let crystallize = CIFilter(name: "CICrystallize",
-        withInputParameters: [kCIInputRadiusKey: 30])!
+    let halftone = CIFilter(name: "CICMYKHalftone",
+        withInputParameters: nil)!
     
     override func viewDidLoad()
     {
@@ -34,9 +34,9 @@ class ViewController: UIViewController, CameraCaptureHelperDelegate
     
     func newCameraImage(cameraCaptureHelper: CameraCaptureHelper, image: CIImage)
     {
-        crystallize.setValue(image, forKey: kCIInputImageKey)
+        halftone.setValue(image, forKey: kCIInputImageKey)
         
-        imageView.image = crystallize.outputImage
+        imageView.image = halftone.outputImage
     }
 }
 
