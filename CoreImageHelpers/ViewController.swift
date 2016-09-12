@@ -12,7 +12,7 @@ class ViewController: UIViewController, CameraCaptureHelperDelegate
 {
     let imageView = MetalImageView() //  OpenGLImageView()
 
-    let cameraCaptureHelper = CameraCaptureHelper(cameraPosition: .Front)
+    let cameraCaptureHelper = CameraCaptureHelper(cameraPosition: .front)
     
     let halftone = CIFilter(name: "CICMYKHalftone",
         withInputParameters: nil)!
@@ -32,7 +32,7 @@ class ViewController: UIViewController, CameraCaptureHelperDelegate
     }
 
     
-    func newCameraImage(cameraCaptureHelper: CameraCaptureHelper, image: CIImage)
+    func newCameraImage(_ cameraCaptureHelper: CameraCaptureHelper, image: CIImage)
     {
         halftone.setValue(image, forKey: kCIInputImageKey)
         
